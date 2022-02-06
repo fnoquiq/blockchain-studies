@@ -9,11 +9,15 @@ class Block {
 
   toString() {
     return `Block =
-            Timestamp =${this.timestamp}
-            LastHash =${this.lastHash.substring(0,10)}
-            Hash =${this.hash.substring(0,10)}
-            Data =${this.data}
+            Timestamp = ${this.timestamp}
+            LastHash = ${this.lastHash.substring(0,10)}
+            Hash = ${this.hash.substring(0,10)}
+            Data = ${this.data}
             `
+  }
+
+  static genesis() {
+    return new this('Genesis time', '--------', 'JJADJASJDASJJA34563', [])
   }
 
 }
