@@ -1,11 +1,14 @@
 {
   "dependencies": {
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.2"
   },
   "devDependencies": {
     "jest": "^27.5.0"
   },
   "scripts": {
+    "start": "node ./app",
+    "dev": "node ./app",
     "test": "jest --watchALL"
   }
 }
