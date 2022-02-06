@@ -10,10 +10,12 @@ class Block {
   toString() {
     return `Block =
             Timestamp =${this.timestamp}
-            LastHash =${this.lastHash}
-            Hash =${this.hash}
+            LastHash =${this.lastHash.substring(0,10)}
+            Hash =${this.hash.substring(0,10)}
             Data =${this.data}
             `
   }
 
 }
+
+module.exports = Block
