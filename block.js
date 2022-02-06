@@ -20,6 +20,14 @@ class Block {
     return new this('Genesis time', '--------', 'JJADJASJDASJJA34563', [])
   }
 
+  static mineBlock(lastBlock, data) {
+    const timestamp = Date.now()
+    const lastHash = lastBlock.hash
+    const hash = 'a-fazer-hash'
+
+    return new this(timestamp, lastHash, hash, data)
+  }
+
 }
 
 module.exports = Block
