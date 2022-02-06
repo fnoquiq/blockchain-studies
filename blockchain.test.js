@@ -23,7 +23,7 @@ describe('Blockchain', () => {
 
   it('validate a valid chain', () => {
     bc2.addBlock('500U$')
-    
+
     expect(bc.isValidChain(bc2.chain)).toBe(true)
   })
 
@@ -38,5 +38,19 @@ describe('Blockchain', () => {
     bc2.chain[1].data = '0U$'
 
     expect(bc.isValidChain(bc2.chain)).toBe(false)
+  })
+
+  it('replaces the chain with a valid chain', () => {
+    bc2.addBlock('600U$')
+    bc.replaceChain(bc2.chain)
+
+    expect(bc.chain).toEqual(bc2.chain)
+  })
+
+  it('does not replace the chain with one of less or equal length', () => {
+    bc.addBlock('200U$')
+    bc.replaceChain(bc2.chain)
+
+    expect(bc.chain).not.toEqual(bc2.chain)
   })
 })
