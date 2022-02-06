@@ -1,4 +1,5 @@
 const express = require('express')
+const res = require('express/lib/response')
 
 const Blockchain = require('../blockchain')
 
@@ -7,8 +8,19 @@ const HTTP_PORT = process.env.HTTP_PORT || 3001
 const app = express()
 const bc = new Blockchain()
 
-app.get('/blocks', (request, response) => {
-  response.json(bc.chain)
+app.use(express.json())
+
+app.get('/blocks', (req, res) => {
+  res.json(bc.chain)
+})
+
+app.post('/mine', (req, res) => {
+  const { data } = req.body
+
+  const block = bc.addBlock(data)
+  console.log(`New block added ${block.toString()}`)
+
+  res.redirect('/blocks')
 })
 
 app.listen(HTTP_PORT, () => {
